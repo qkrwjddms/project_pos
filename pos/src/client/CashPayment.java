@@ -2,6 +2,7 @@ package client;
 import java.util.Scanner;
 
 public class CashPayment implements Payment{
+	Asset_Management am = new Asset_Management();
 	public int cash;
 	public void cash() {
 		System.out.print("얼마를 받았습니까? : ");
@@ -13,6 +14,7 @@ public class CashPayment implements Payment{
 		cash();
 		System.out.println(cash + "원을 받았습니다.");
 		if (price < cash) {
+			am.plus_cash(cash, (cash - price));
 			System.out.println("거스름돈 : " + (cash - price) + "원");
 			return true;
 		} else {
